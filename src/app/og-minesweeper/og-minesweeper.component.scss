@@ -1,0 +1,188 @@
+
+@mixin games ($heigh: 300px, $widt: 250px) {
+    background-color: rgb(207, 206, 206);
+    margin: auto;
+    height: $heigh;
+    width: $widt;
+    display: grid;
+    grid-template-rows: 56.5px auto;
+    box-shadow: -4px -4px 1px rgb(139, 138, 138) inset, 1.5px 1.5px 1px 4px whitesmoke inset;
+}
+
+@mixin openfields ($fontsi: 1.1em){
+    background-color: rgb(207, 206, 206);
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: none;
+    font-weight: bold;
+    font-size: $fontsi;
+}
+
+@mixin show ($margleft: 3px) {
+    text-align: center;
+    line-height: 1.6;
+    background-color: black;
+    color: red;
+    font-size: larger;
+    margin-left: $margleft;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    width: 50px;
+}
+
+$outershadow: -1.5px -1.5px 0.5px 3px rgb(139, 138, 138), 1.5px 1.5px 1px 4px whitesmoke;
+$innershadow: 2px 2px 2px whitesmoke inset, -2px -2px 2px rgb(139, 138, 138) inset;
+
+
+.viewport {
+    position: relative;
+}
+
+.whitebox {
+    box-sizing: border-box;
+    position: absolute;
+    width: 80vw;
+    height: 80vh;
+    background-color: white;
+    margin-left: 10vw;
+    display: grid;
+    grid-template-rows: 5% 95%;
+}
+
+.navi {
+    box-sizing: border-box;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    display: grid;
+    grid-template-columns: auto auto auto;
+
+    div {
+        text-align: center;
+        line-height: 2em;
+    }
+
+}
+
+
+.outernavi {
+    height: 36.5px;
+    box-sizing: border-box;
+    margin-top: 18px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 5px;
+    box-shadow: $outershadow;
+}
+
+.matchnavi {
+    display: grid;
+    grid-template-columns: 70px auto 70px;
+    height: 100%;
+}
+
+.bombsleft {
+    height: 100%;
+}
+
+.showbombsleft {
+    @include show;
+}
+
+.emodiv {
+    height: 30px;
+    width: 30px;
+    margin-top: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1.5em;
+    color: yellow;
+    background-color: rgb(207, 206, 206);
+    box-shadow: $innershadow
+}
+
+.timer {
+    height: 100%;
+}
+
+.showtimer {
+    @include show ($margleft: 17px);
+}
+
+
+.game {
+    @include games;
+}
+
+.biggame {
+    @include games($heigh: 450px, $widt: 400px);
+}
+
+.megagame {
+    @include games($heigh: 450px, $widt: 730px);
+}
+
+.divforshadow {
+    border: 18px solid transparent;
+}
+
+.outerfielddiv {
+    height: 100%;
+    box-shadow: $outershadow;
+}
+
+.fieldbuild {
+    height: 100%;
+    display: grid;
+}
+
+.matchfield {
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+}
+
+.bigmatch {
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+
+.megamatch {
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
+
+.fielddivs {
+    border: 1pt solid rgb(135, 135, 135);
+    box-shadow: $innershadow;
+}
+
+.openfield {
+    @include openfields ($fontsi: 1.1em);
+}
+
+.openfieldbig {
+    @include openfields ($fontsi: 1em)
+}
+
+.one {
+    color: rgb(27, 27, 250)
+}
+.two {
+    color: rgb(8, 105, 8);
+}
+.three {
+    color: rgb(192, 17, 17);
+}
+.four {
+    color: rgb(12, 12, 97);
+}
+
+.markfield {
+    background-image: url("/assets/flag.png");
+    background-size: contain;
+}
+
+.iambomb {
+    background-image: url("/assets/bomb.png");
+    background-size: contain;
+}

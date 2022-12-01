@@ -1,0 +1,61 @@
+<div class="viewport">
+  <div class="whitebox">
+    <div class="navi">
+      <div (click)="sizing(beginner)">Anfänger</div>
+      <div (click)="sizing(intermediate)">Fortgeschrittene</div>
+      <div (click)="sizing(pro)">Profis</div>
+    </div>
+
+    <div [ngClass]="{
+      'game': field.size==beginner[0],
+      'biggame': field.size==intermediate[0],
+      'megagame': field.size==pro[0]
+    }">
+
+      <div class="outernavi">
+        <div class="matchnavi">
+          <div class="bombsleft">
+            <div class="showbombsleft">{{ field.showbombs }}</div>
+          </div>
+          <div class="smiley">
+            <div class="emodiv" (click)="resizing()" *ngIf="!field.lost && !field.won">&#9787;</div>
+          <div *ngIf="field.lost" class="emodiv" (click)="resizing()">&#9785;</div>
+          <div *ngIf="field.won" class="emodiv" (click)="resizing()">&#9786;</div>
+          </div>
+          <div class="timer">
+            <div class="showtimer">{{ field.now }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divforshadow">
+        <div class="outerfielddiv">
+          <div [ngClass]="{
+            'fieldbuild': true,
+            'matchfield': field.size==beginner[0],
+            'bigmatch': field.size==intermediate[0],
+            'megamatch': field.size==pro[0]
+          }">
+    
+              <div *ngFor="let cask of field.littlecasket; let i = index" (click)="field.discover(i)"
+                (contextmenu)="field.markbomb(i)" [ngClass]="{
+                'fielddivs': true,
+                'openfield': cask.klick && field.size==beginner[0],
+                'openfieldbig': cask.klick,
+                'markfield': cask.rightklick,
+                'iambomb': cask.isbomb && !cask.rightklick,
+                'one': cask.neighborbombs===1,
+                'two': cask.neighborbombs===2,
+                'three': cask.neighborbombs===3,
+                'four': cask.neighborbombs!==null && cask.neighborbombs>=4 
+                }"> {{cask.neighborbombs}}
+              </div>
+            </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
