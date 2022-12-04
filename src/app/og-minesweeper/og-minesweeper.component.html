@@ -18,9 +18,9 @@
             <div class="showbombsleft">{{ field.showbombs }}</div>
           </div>
           <div class="smiley">
-            <div class="emodiv" (click)="resizing()" *ngIf="!field.lost && !field.won">&#9787;</div>
-          <div *ngIf="field.lost" class="emodiv" (click)="resizing()">&#9785;</div>
-          <div *ngIf="field.won" class="emodiv" (click)="resizing()">&#9786;</div>
+            <div class="emodiv" (click)="resizing()" *ngIf="!field.lost && !field.won"><img src="assets/startsmiley.png" alt="&#9787;"></div>
+          <div *ngIf="field.lost" class="emodiv" (click)="resizing()"><img src="assets/lostsmiley.png" alt="&#9785;"></div>
+          <div *ngIf="field.won" class="emodiv" (click)="resizing()"><img src="assets/wonsmiley.png" alt="&#9786;"></div>
           </div>
           <div class="timer">
             <div class="showtimer">{{ field.now }}</div>
